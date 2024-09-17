@@ -98,11 +98,6 @@ def generate_random_number(min_value, max_value):
         raise ValueError("min_value must not be greater than max_value")
     return random.randint(min_value, max_value)
 
-
-
-# Compare the generated random number with the guess number
-compare_guess_to_random(random_number)
-
 def compare_guess_to_random(random_number):
     """
     Compare a guess number with the random number and print a message.
@@ -117,8 +112,9 @@ def compare_guess_to_random(random_number):
         print("You got it!")
 
 
+# Generate a random number between 1 and 100
+random_number = generate_random_number(1, 100)
 
-
-
-
+# Compare the generated random number with the guess number
+compare_guess_to_random(random_number)
 
