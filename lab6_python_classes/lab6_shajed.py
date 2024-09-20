@@ -80,3 +80,43 @@ print(usercar1.get_descriptive_name())
 usercar1.read_odometer()
 usercar1.update_odometer(100)
 print(usercar1.read_odometer())
+
+
+print("\n-------Exercise-----\n")
+"""
+Md Abu Shajed
+Lab 6 Excerise  
+"""
+
+class BankAccount:
+    def __init__(self, account_number, account_holder):
+        # Initialize account number, account holder, and balance
+        self.account_number = account_number
+        self.account_holder = account_holder
+        self.balance = 0.0  # Balance is initialized to 0.0
+
+    def deposit(self, amount):
+        # Adds the specified amount to the balance
+        if amount > 0:
+            self.balance += amount
+            print(f"${amount} deposited. New balance: ${self.balance}")
+        else:
+            print("Deposit amount must be positive.")
+
+    def withdraw(self, amount):
+        # Subtracts the specified amount from the balance if sufficient funds exist
+        if amount > self.balance:
+            print("Insufficient balance for the withdrawal.")
+        elif amount <= 0:
+            print("Withdrawal amount must be positive.")
+        else:
+            self.balance -= amount
+            print(f"${amount} withdrawn. New balance: ${self.balance}")
+
+# Example usage
+account = BankAccount("123456789", "John Doe")
+account.deposit(500)
+account.withdraw(100)
+account.withdraw(600)
+
+        
