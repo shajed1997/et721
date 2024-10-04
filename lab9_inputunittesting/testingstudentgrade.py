@@ -37,7 +37,7 @@ class TestMainFunction(unittest.TestCase):
         output = mock_stdout.getvalue()
 
         # Check if the printed output is as expected
-        self.assertIn("Invalid input\n", output)
+        self.assertIn("Invalid input.\n", output)  # Include the period
         self.assertIn("The class average is 83.33\n", output)
 
     # Test for invalid grades (e.g., grade > 100 or < 0)
@@ -58,7 +58,39 @@ class TestMainFunction(unittest.TestCase):
         self.assertIn("Grade must be between 0 to 100.", output)
         self.assertIn("The class average is 76.00", output)
 
+    # Test for invalid number of students (string instead of number)
+    @patch('builtins.input', side_effect=['Peter', '3', '85', '90', '75'])
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_invalid_number_of_students(self, mock_stdout, mock_input):
+        """
+        Test for invalid number of students input (string instead of number).
+        'Peter' is not a valid number of students.
+        """
+        # Call the function 'main()' from studentgrade.py
+        studentgrade.main()
+
+        # Retrieve the captured output
+        output = mock_stdout.getvalue()
+
+        # Check if the printed output is as expected
+        self.assertIn("Invalid input.\n", output)  # Assuming program handles string input with an invalid input message.
+
+    # Test for invalid grade input (string instead of number)
+    @patch('builtins.input', side_effect=['2', 'Peter', '90', '75'])
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_invalid_grade_string(self, mock_stdout, mock_input):
+        """
+        Test for invalid grade input (string instead of number).
+        'Peter' is not a valid grade value.
+        """
+        # Call the function 'main()' from studentgrade.py
+        studentgrade.main()
+
+        # Retrieve the captured output
+        output = mock_stdout.getvalue()
+
+        # Check if the printed output is as expected
+        self.assertIn("Invalid input.\n", output)  # Assuming program handles string input with an invalid input message.
+
 if __name__ == "__main__":
     unittest.main()
-
-
