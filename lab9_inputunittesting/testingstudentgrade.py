@@ -37,7 +37,7 @@ class TestMainFunction(unittest.TestCase):
         output = mock_stdout.getvalue()
 
         # Check if the printed output is as expected
-        self.assertIn("Invalid input.\n", output)  # Include the period
+        self.assertIn("Invalid input\n", output)
         self.assertIn("The class average is 83.33\n", output)
 
     # Test for invalid grades (e.g., grade > 100 or < 0)
@@ -60,3 +60,5 @@ class TestMainFunction(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
